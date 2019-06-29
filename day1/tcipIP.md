@@ -1,4 +1,5 @@
 ## network 정의?
+정보의 공유 = 데이타의 공유
 ## bit and byte
 > ## lan local area network
 사용자가 포함된 네트워크
@@ -50,6 +51,28 @@ UDP (비...)
 full-mesh N(n-1)/2  5:10회로가 필요  10:45개선이 필요 - 안정적
 star-mesh (hub & spook) n-1
 
+pstn isdn adsl vdsl 광선 기가랜선
+          bisdn
+-----
+네트웤그 구축의 핵심
+확장성
+> 이중성
+  백업 \ 로드분산
+
+****
+데이타 전송관계
+
+서버: 정보를 생성 (listen 상태)
+클라이언트: 사용자에게 서비스 함
+
+참고: wireshark.org에서 설치하고 연습하기
+
+데이타전송 유형 IPv4
+unicast: 1대1 클라이언트 하나에 (일반적인 인터넷)
+broadcast: 1대 불특정 다수 (방송국) 개선을 위해서 VLAN을 사용
+multicast: 1대 특정 다수 (인터넷 방송)
+
+참고: broacast pluggin의 차이점: 플러그인은 수신포토에서 들어오는 데이타를 
 
 ## private and public network
 
