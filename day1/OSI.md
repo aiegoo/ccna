@@ -1,5 +1,5 @@
 ## osi 계층 참조 모델 open system interconnection
-
+![osi model](osi-model.jpeg)
 
 ### 네트워크 설계를 위한 기준을 제공
 호환성 제공
