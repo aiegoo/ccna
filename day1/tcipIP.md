@@ -56,7 +56,7 @@ switch/hub = Lan 구간
 참고: t1(1554k) e1(2048k) 1m = 1000k
 장비: 라우터
 
-full-mesh N(n-1)/2  5:10회로가 필요  10:45개선이 필요 - 안정적
+full-mesh N(n-1)/2  5:10회로가 필요  10:45개 회선이 필요 - 안정적
 star-mesh (hub & spook) n-1
 
 pstn isdn adsl vdsl 광선 기가랜선

@@ -40,12 +40,18 @@ UDP
 
 - 3 - network[IP][TCP or UDP][DATA] (ip address) Packet IPv4, 32bit, 10진수, 논리적인 주소 4294967296 (2sup32) 라우터
 IP: BE방식
-ICMP: internet control message request(8) ==> reply(0) 핑을 이용
-IGMP
-**ARP**: lan구간에서 중요. IP를 이용해서 MAC주소를 알아 온다.
+ICMP: internet control message protocol(8) ==> reply(0) 핑을 이용
+IGMP internet group management protocol
+**ARP**: lan구간에서 중요. IP를 이용해서 MAC주소를 알아 온다. adress resolution protocol
+[wikipedia](https://en.wikipedia.org/wiki/Address_Resolution_Protocol)
+- sha
+- spa
+- tha
+- tpa
+
 - 2 - data link [Ethernet][IP][TCP or UDP][DATA] frame, mac address, 16, 48bit
-MAC주소는 앞 oui-24라고해서 회사이름이록 뒤에는 고유번호가 붙음. 스위치
-enternet
+MAC주소는 앞 oui-24라고해서 회사이름이, 뒤에는 고유번호가 붙음. 스위치
+ethernet
 wan: hdlc ppp frame-relay
 
 - 1 - physical: 전기적인 신호로 변환 및 출력, bit, hub
@@ -62,10 +68,10 @@ CSMA/CD
 carrier sense multiple access collision detection
 backoff
 
-L1 hub
-L2 switch: CD을 나눠준다. full duplex, 같은 bd broadcast domain 안에 있다
-L3 router: 물리적으로
 
+> L1 hub
+> L2 switch: CD을 나눠준다. full duplex, 같은 bd broadcast domain 안에 있다
+> L3 router: 물리적으로
 라우팅 테이블을 참조한다는 것의 의미
 테이블에 내용이 있은면 전송이 가능
 없으면 전송 불가능
@@ -78,3 +84,4 @@ L3 router: 물리적으로
 
 라우팅테이블은 설정을 통해서 만들어지고
 ARP테이블은 기본적으로 없음.
+[layer 2 3 switch difference](http://www.differencebetween.net/technology/difference-between-layer-2-switch-and-layer-3-switch/)
