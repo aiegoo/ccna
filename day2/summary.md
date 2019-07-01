@@ -45,7 +45,7 @@ from diary
 ![step 1 download button](attatched/1-1.png)
 ![step 2 download widnows client](attatched/2.png)
 ![step 2 download widnows client](attatched/2-1.png)
-`all the necessary files have so far been downloaded`
+<br>`all the necessary files have so far been downloaded`
 
 ##  3. <a name='step3'></a>step3
 
