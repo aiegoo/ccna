@@ -57,3 +57,19 @@ from diary
 
 > 가상 머쉰이 재부팅된다.
 -----
+>Step5 WinSCP installation and setup
+`[link]`: https://winscp.net/eng/download.php
+![](attatched/winscp.png)
+
+>Step6 file transfer and settings
+![](attatched/winscpFiletransfer.png)
+![](attatched/winscpSetting.png)
+
+>Step6 Client and terminal install and config
+![](attatched/terminalClient.png)
+
+>step7 Webbrowser login and adding additional equipment
+![](attatched/webBrowserAdd.png)
+
+>step8 expanding vm hd capacity and wireshark
+![](attatched/expandHDwireshark.png)
