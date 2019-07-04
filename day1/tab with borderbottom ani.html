@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!-- saved from url=(0038)http://127.0.0.1:5600/tabs/index4.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+     
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>tab with borderbottom ani</title>
+     <link rel="stylesheet" href="./tab with borderbottom ani_files/index4.css">
+     <script src="./tab with borderbottom ani_files/jquery-3.3.1.min.js.download"></script>
+     <script src="./tab with borderbottom ani_files/index4.js.download" defer="defer"></script>
+</head>
+<body>
+  <!-- div.tabs>.tab-buttons>span.content$*3+div#lamp.content1^div.content>.content$*3  -->  
+  <div class="tabs">
+       <div class="tab-buttons">
+            <span class="content1">grapes</span>
+            <span class="content2">apple</span>
+            <span class="content3">pear</span>
+            <div id="lamp" class="#lamp content2"></div>
+       </div>
+       <div class="content">
+            <div class="content1" style="display: none;">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore sequi itaque incidunt soluta at odit fugiat, saepe optio corrupti illo sed error quae repellendus, ut consequatur tempore dolore pariatur? Minima.Nesciunt animi eos velit ex. Asperiores quas atque esse facilis. Officia asperiores excepturi aut optio est voluptas, voluptatem totam eligendi impedit unde pariatur, tempore, beatae numquam assumenda veniam quo iusto!</div>
+            <div class="content2" style="display: none;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic aperiam ipsum vitae odit facere facilis!</div>
+            <div class="content3" style="display: none;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum, culpa? Veritatis quam assumenda velit corporis atque in dolor sint quasi fuga eum accusantium nesciunt, non aliquid similique sed quas vel.Illum, sed necessitatibus dolorum nemo vero, nihil delectus possimus qui ab mollitia consequatur tempore deserunt cumque excepturi quidem iusto tempora quam eveniet facere! Deleniti, fugiat dignissimos dolor aspernatur incidunt perferendis.</div>
+       </div>
+  </div>
+<!-- Code injected by live-server -->
+<script type="text/javascript">
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+</body></html>

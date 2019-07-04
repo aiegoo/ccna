@@ -1,0 +1,13 @@
+html, body {margin: 0; padding: 0; width: 100%; height: 100%;font-size: 16px; text-align: left; color: #333}
+
+div, ul, ol, li, h1, h2, h3, h4 {margin: 0; padding: 0; list-style: none;}
+a {text-decoration: none; color: inherit}
+
+.tabs {width: 50%; margin: 10px auto; position: relative;}
+.tab-buttons span {font: 400 0.9rem 'open sans', sans-serif; color: #000; background: #eee; cursor: pointer; display: block;width: 33.33%; float: left; text-align: center; height: 40px; line-height: 40px; border-bottom: 1px solid #ddd;}
+.tab-content {border-bottom: 3px solid #ddd; background: #eee;display: inline-block;}
+
+#lamp {width: 33.33%; height: 2px; background: #333; display: block; position: absolute;top: 40px; transition: all .3s ease-in;}
+#lamp.content2 {left: 33.33%; transition: all .3s ease-in;}
+#lamp.content3 {left: 66.66%; transition: all .3s ease-in}
+#lamp.content1 {left: 0; transition: all .3s ease-in;}
