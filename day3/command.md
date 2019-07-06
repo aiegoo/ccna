@@ -108,6 +108,27 @@ aux
 vty - virtual terminal --> ssh, telnet
 
 line con 0  -- 1명
-line aux 0  -- 1묭
+line aux 0  -- 1명
 line vty 0 4 - 5명
+
+RAM 을 NVRAM 에 저장하는 명령어 : copy run start  , wr me  , wr
+
+
+sh cdp nei [detail]:
+
+sh cdp nei [detail] : 상대방 장비 정보[상세하게]를 확인 , L2 까지 up이 되어있어야 한다
+sh int [s1/0]:[해당] interface 의 전체 정보 확인
+sh ip int [s1/0] :ip가 동작하는 [해당]interface 의 정보 확인
+
+IOS upgrade , backup 을 할때
+-IOS 버전 정보 확인: sh ver
+-Flash memory 정보  확인 : sh fla
+
+재부팅 : reload
+
+### 설정
+셋업모드
+
+시스코 기본 --
+설정은 기본적으로 덮어씌우기 안된다
 
