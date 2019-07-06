@@ -20,17 +20,20 @@ login 유무에 따라서 password 입력 유무가 정해짐
 
 |    |    |    |
 |:---|:---|:---|
-| line c 0
-pass cisco
-login   |  line c 0
-pass cisco
-login  | line a 0
-pass cisco
-login   |
-| line v 0 4
-pass cisco
-login   |    |    |
+|    |    |    |
+|    |    |    |
 
+line c 0
+pass cisco
+login
+
+line a 0
+pass cisco
+login
+
+line v 0 4
+pass cisco
+login
 
 Router con0 is now available
 
@@ -40,3 +43,20 @@ User Access Verification
 
 Password:cisco 
 Router>
+
+login 유무에 따라서 password 입력 유무가 정해짐 
+password 입력 유무에 따라서 접속 유무가 정해짐 
+
+
+line v 0 4
+pass cisco
+login
+
+
+
+R1#telnet 13.13.12.2
+Trying 13.13.12.2 ... Open
+
+User Access Verification
+
+Password: cisco
