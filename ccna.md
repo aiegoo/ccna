@@ -1057,7 +1057,7 @@ Static
 
 
 
-설정 
+### 설정 
 
 ip route [내가 모르는 네트워크'네임][netmask][next hop'ip]
 
@@ -1118,6 +1118,7 @@ routing table 을 참조
 1> routing table 에 정보가 있으면 전송이 가능 
      routing  table 에 정보가 없으면 전송이 불가능 
 
+### 경로검색
 2> 경로 검색 => 경로 선출 => 경로 유지
 
 경로 검색, 경로 선출, 경로 유지를 관리자가 일일이 지정하는 것은 static routing protocol
@@ -1127,6 +1128,7 @@ routing table 을 참조
 
 경로 선출
 
+###
 1.롱기스트 매치룰 : 목적지 ip 에 가장 길게 일치하는 경로가 선출
 
 목적지 ip : 172.16.1.1
@@ -1134,6 +1136,7 @@ routing table 을 참조
 172.16.1.0 /24  경로 선출
 172.16.0.0 /16
 
+###
 2.상황에 따라서 
 
 -다수의 routing protocol 이 있는 경우 AD(신뢰도)값이 가장 작은 경로가 선출
@@ -1164,6 +1167,7 @@ dynamic routing protcol 의 metric 은 변경할수 있다
 next hop 이 보장이 되지 않으면 network 정보를 routing table 에 등록할수가 없다
 => IGP 에서는 conneted 로 기본 보장이 된다
 
+## 5부 라우터 개념
 
 Router 가 사용하는 스위칭 방식
 => routing table 참조 여부
@@ -1261,6 +1265,7 @@ or
 ip route [내가 모르는 네트워크 ' 네임][netmask][발신 interface 의 이름]
 
 
+###
 -Dynamic 
 
   IGP : 내 네트워크를 관리자가 설정해주면 알아서 동적으로 전파 (자기 소개하기)
@@ -1304,7 +1309,7 @@ update 를 위한 CPU 소모율이 많다
 (루프 방지법:Split-Horizon : 수신한 정보를 수신한 interface 로 다시 전송하지 않는다)
 
 
-
+## 6부
 
 Ripv1
 
@@ -1577,7 +1582,7 @@ Ripv2    224.0.0.9
 EIGRP   224.0.0.10
 
 
-
+## EIGRP
 EIGRP
 
 1.cisco  전용 (2013 년 이후에는 RFC 등록)
@@ -1683,6 +1688,7 @@ broadcast                  5              15
 nonbroadcast           60            180
 
 
+###
 12.설정
 
 classful 하게 설정
@@ -2287,6 +2293,7 @@ Router 가 IP헤더안에 있는 목적지 ip 를 보고 routing table 을 참�
 
 
 
+## routing-table
 routing table 을 참조
 
 1>routing table 에 정보가 있어야만 전송이 가능 
@@ -2335,9 +2342,11 @@ interface 설정을 완성해서 routing table 에 등록
 routing table 을 전체적으로 완성 시켜주기 위해서  routing protocol 을 구동 시켜준다
 
 
+## routing-protocol
  Routing protocol 의 종류 
 
 
+## static
 -Static : 내가 모르는 네트워크 네임을 관리자가 일일이 설정 (남의 이름 물어보기)
 
 ex>ip route 192.168.1.0 255.255.255.224  13.13.12.2
@@ -2345,7 +2354,8 @@ ex>ip route 192.168.1.0 255.255.255.224  13.13.12.2
 
 -Dynamic
 
-  -IGP : AS 안에서 빨리빨리가 목적 : 내 네트워크를 관리자가 설정해주면 알아서 동적으로 전파 (자기 소개하기)
+  -IGP : AS 안에서 빨리빨리가 목적 : 내 네트워크를 관리자가 설정해주면 알아서 동적으로 전파 (자기 소개하기) interior gateway protocol
+  rip igrp ospf is-is
   
     -distance vector  : Ripv1 , Ripv2
 
