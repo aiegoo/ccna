@@ -2133,7 +2133,7 @@ nonbroadcast                   30          120                O                 
 
 
 
-14.LSA 광고 타입
+14.LSA 광고 타입  -->외울것
 
           구분      영어 구분      정보                    출처       routing table   database  table 
 
