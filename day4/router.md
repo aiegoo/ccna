@@ -287,3 +287,118 @@ Link - State 에 속해있는 SPF 알고리즘을 사용하는 대표적인 개�
 >참고
 2> 네트워크 정보의 출처까지 포함해서 update 한다
  =>즉 각각의 Router 에서 전체적인network 를  판단할수가 있다( database table 에 있다)
+=> 변화가 많으면 오히려 장비 소모량이 많아진다
+     (해결 방안 : 하나의 AS 안에 여러 area 로 구분을 하는 2계층 구조를 가진다)
+-구조가 복잡 (인접성)
+
+  =>인접성을 맺어야만 정보를 update 한다
+      즉 인접성을 맺지 않으면 정보가 교환되지 않는다 
+      그래서 인접성을 맺는 것들은  제일 먼저 인접성을 맺었는지 확인
+[참고]
+
+distance vector  : slow
+link - state : fast
+eigrp : very fast
+
+
+2.classless routing protocol
+
+-VLSM,CIDR 지원 된다  => 수동요약만 지원한다 
+
+3.multicast update
+
+
+OSPF     224.0.0.5~6 
+
+[참고]
+
+OSPF     224.0.0.5~6 
+Ripv2     224.0.0.9
+EIGRP    224.0.0.10
+
+
+## OSPF (Open Shortest Path First)
+
+Link - State 에 속해있는 SPF 알고리즘을 사용하는 대표적인 개방형 Routing Protocol 이다
+
+1.AD 110
+2.Version  2   참고 : IPv6 OSPF (Version 3)
+3.개방형 
+4.classless routing protocol
+5.VLAM,CIDR 지원 O
+6.수동 요약만 지원 (no au 하면 안됨)
+7.multicast update 224.0.0.5~6 (Hello : 224.0.0.5)
+
+[참고]
+수동적으로 neighbor 이라는 명령어로 인접성을 맺게 되면 unicast 로  update 가 된다
+
+9.metric = COST = 10^8/BW  =  100M/BW
+[참고]
+10^7 = 10M , 10^8 = 100M , 10^9 = 1000M
+
+   10M  = 10^8/10^7 = 100M/10M   = 10
+  100M  = 10^8/10^8 = 100M/100M   = 1   경로 선출
+
+  100M  = 10^8/10^8 = 100M/100M    = 1
+ 1000M  = 10^8/10^9 = 100M/1000M   = 1   불필요한 균등 로드 분산 
+
+
+불필요한 균등 로드 분산을 해결하려면 
+
+auto-cost reference-bandwidth 명령어를 사용
+
+router ospf 1
+auto-cost reference-bandwidth  1000
+
+설정을 하면 100M/BW 를 1000M/BW 로 변경
+
+  100M  = 10^9/10^8 = 1000M/100M    = 10
+ 1000M  = 10^9/10^9 = 1000M/1000M   =  1    경로 선출
+
+ 10. 2계층 구조 
+(계층적 구조 : 하나의 AS 안에 여러 area  로  구분)
+
+- area 0 은 backbone area 이고 서로 다른 area 가 통신 하려면 area 0 을 통해서 통신할수 있다 즉 일반 area 들은 area 0 에 연결이 되어있어야 한다
+
+=>물리적으로 연결이 되어있지 않으면 Virtual-link 설정을 해줘야 한다
+   (방향쪽 ABR 과 물리적으로 연결되어있지 않은 area 의 경계 Router 에서 설정)
+
+   11.인접성
+
+Hello   : 인접성을 맺고 유지(인접성의 조건) 유지시간 4배차이 
+DBD    : 전체적인 정보를 교환 database discussion
+LSR     : 새로운 정보를  요청 
+LSU     : LSR 에 대한 응답
+LSA     : 승인  
+
+### Hello 
+
+Router-id  : Router 구분하는 식별자 
+=> 서로  동일하면 인접성을  맺을수 없다
+
+DR,BDR  주소  desginated , backup designated router
+Priority (우선 순위값) = 기본값 1 (범위 : 0 ~ 255)
+[주의점] Priority값이 0이면 절대로 DR ,BDR 되지 않는다
+subnetmask -classless
+neighbor's list
+
+area-id (area 번호) => 서로 동일해야 한다
+authentication password(인증 암호) => 서로 동일해야 한다
+-무인증(0) 평문 인증(1) MD5인증(2)
+Hello,Dead(Hello 수신대기 시간) <u>interval(주기)4배차이 => 서로 동일 해야 한다</u>
+stub area flag : stub 으로 지정된 area 안에 있는 모든 router 는 stub 이라고 설정 
+=> 서로 동일해야 한다
+
+MTU : 전송 최대 크기 유닛 => 서로 동일해야 한다
+
+
+DR,BDR 의 선출 기준
+
+1.Priority = 1 ( 0~255 ) 0 이면 절대로 DR,BDR 되지 않는다
+=>Priority 값이 가장 큰 Router 가 DR 이 되고 그 다음이 BDR 이 되고 나머지는 DRother 가 된다
+
+2.Router-id 
+=>Router-id  값이 가장 큰 Router 가 DR 이 되고 그 다음이 BDR 이 되고 나머지는 DRother 가 된다
+
++ 선출이 된 이후에는 더 좋은 조건의 내용이 와도 변경되지 않는다
+   단 재인접성을  (reload  or clear ip ospf process ) 맺으면 선출 기준에 따라서 다시 선출이 된다

@@ -1981,7 +1981,7 @@ eigrp : very fast
 
 2.classless routing protocol
 
--VLSM,CIDR 지원 된다
+-VLSM,CIDR 지원 된다  => 수동요약만 지원한다 
 
 3.multicast update
 
