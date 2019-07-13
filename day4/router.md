@@ -402,3 +402,27 @@ DR,BDR 의 선출 기준
 
 + 선출이 된 이후에는 더 좋은 조건의 내용이 와도 변경되지 않는다
    단 재인접성을  (reload  or clear ip ospf process ) 맺으면 선출 기준에 따라서 다시 선출이 된다
+
+
+13.Network Type --외울것
+
+                                Hello        Dead      DR,BDR 선출 유무     네이버(인접성)
+point-to-point                 10           40                 X                     자동
+broadcast                       10           40                  O                     자동
+point-to-multipoint           30          120                X                    자동   
+nonbroadcast                   30          120                O                     수동
+
+
+
+14.LSA 광고 타입  -->외울것
+
+          구분      영어 구분      정보                    출처       routing table   database  table 
+
+1     같은 area    intra area    Router-id            Router             O               Router    
+2     같은 area    intra area    DR 정보                 DR                                 Net
+
+3     다른 area    inter area    Network정보           ABR             OIA         Summary Net
+4     다른 area    inter area    ASBR 정보              ABR                            Summary Asb
+
+5     다른 AS    AS-external   외부네트워크 정보   ASBR             OE1 : metric 증가
+                                        

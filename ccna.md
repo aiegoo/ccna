@@ -2123,7 +2123,7 @@ Routing table  : 최적 경로가 등록된 table  : sh ip route
 
 
 
-13.Network Type
+13.Network Type --외울것
 
                                 Hello        Dead      DR,BDR 선출 유무     네이버(인접성)
 point-to-point                 10           40                 X                     자동
