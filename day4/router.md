@@ -233,5 +233,30 @@ data 변조를 방지
  net 13.0.0.0
  no auto summary (no au)
 
+Day5    12:21 PM
+router - id (eigrp, ospf, bgv4) 
+Router 를 구분하는 식별자 (IPv4 주소 형식으로만 진행*IPv6 에서도 동일하다)
 
- 
+Router - id 선출 기준
+
+1.설정
+
+router eigrp 100
+eigrp router-id 1.1.1.1
+
+2.loopback interface 의 ip 중에서 숫자가 가장 큰 ip 가 router-id 로 선출
+
+3.물리적인 interface 의 ip 중에서 숫자가 가장 큰 ip 가 router-id 로 선출
+
+(p236 ex-24-14)
+
+eigrp torpology table analysis
+
+(동영상 참고) 12:46 PM
+
+[참고] 12:50 PM
+비균등 로드 분산을 하려면 2가지의 조건이 만족 되어야 한다
+
+1>variance 값을 이용해서 최적 경로의 metric 보다 비균등 로드 분산 하려는 경로의 metric 을 작게 만들어 준다
+
+2>최적 경로의 FD 보다 작은 AD 값을 가지고 있어야 한다(후속 경로)
