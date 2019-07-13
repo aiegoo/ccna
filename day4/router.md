@@ -260,3 +260,30 @@ eigrp torpology table analysis
 1>variance 값을 이용해서 최적 경로의 metric 보다 비균등 로드 분산 하려는 경로의 metric 을 작게 만들어 준다
 
 2>최적 경로의 FD 보다 작은 AD 값을 가지고 있어야 한다(후속 경로)
+
+
+1:03 PM
+ex 24-21
+
+25장 eigrp 정보확인
+
+디버깅 분석
+
+디버깅을 끄는 방법
+do un all
+
+3:44 PM
+8부 ospf
+
+OSPF (Open Shortest Path First)
+
+Link - State 에 속해있는 SPF 알고리즘을 사용하는 대표적인 개방형 Routing Protocol 이다
+
+
+
+    Link  - State
+
+1.Link 변화시 인접성을 맺은 모든 router 에게 변화된 내용만 update 를 한다
+>참고
+2> 네트워크 정보의 출처까지 포함해서 update 한다
+ =>즉 각각의 Router 에서 전체적인network 를  판단할수가 있다( database table 에 있다)
