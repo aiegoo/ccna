@@ -233,7 +233,7 @@ data 변조를 방지
  net 13.0.0.0
  no auto summary (no au)
 
-Day5    12:21 PM
+## Day5    12:21 PM
 router - id (eigrp, ospf, bgv4) 
 Router 를 구분하는 식별자 (IPv4 주소 형식으로만 진행*IPv6 에서도 동일하다)
 
@@ -250,7 +250,7 @@ eigrp router-id 1.1.1.1
 
 (p236 ex-24-14)
 
-eigrp torpology table analysis
+### eigrp torpology table analysis
 
 (동영상 참고) 12:46 PM
 
@@ -425,4 +425,116 @@ nonbroadcast                   30          120                O                 
 4     다른 area    inter area    ASBR 정보              ABR                            Summary Asb
 
 5     다른 AS    AS-external   외부네트워크 정보   ASBR             OE1 : metric 증가
-                                        
+
+Day6 12:13 PM
+15. 설정
+
+router ospf 1
+area X virtual-link [상대방 router-id]
+
+OSPF 필수 설정
+
+172.16.1.0  /24
+13.13.10.0  /24
+13.13.12.0  /24
+
+
+router ospf 1
+net 172.16.1.0 0.0.0.255 area 0
+net 13.13.10.1 0.0.0.0 a 0
+net 13.13.12.1 0.0.0.255 a 0
+
+OSPF 에서 일반 area는 area 0 즉 backbone area 에 연결이 되어 있어야 한다 근데 연결이 되어 있지 않으면 물리적으로 연결되어 있지 않은 방향쪽 ABR 과 물리적을 연결이 되어 있지 않은 AREA 의 경계 Router 에서Virtual-Link 를 설정 해줘야 한다
+
+>virtual link 방법
+router ospf 1
+area X virtual-link [상대방 router-id]
+
+R2
+
+router ospf 1
+area 13 virtual-link 3.3.3.3
+
+R3
+
+router ospf 1
+area 13 v 2.2.2.2
+
+### OSPF 옵션 설정
+
+MD5 인증 설정
+
+-interface 인증 설정 : 설정한 구간에서만 인증이 진행된다 
+ 인증할 구간에 연결된 모든 interface 에서 설정
+ |    |    |
+|:---|:---|
+| R1   | int s 1/0
+ip ospf authentication message-digest
+ip ospf message-digest-key 13 md5 cisco   |
+|  R2  | int s 1/1
+ip ospf au m
+ip ospf me 13 m cisco
+   |
+
+
+-area 인증 설정
+ 인증 설정을 한 area 전체가 인증
+ 인증할 area안에 속해있는 모든 router 에서 설정하고 인접성을 맺은 모든 interface 에 적용
+
+ |    |    |
+|:---|:---|
+| R1   | router ospf 1
+area 0 authentication message-digestint s 1/0
+ip ospf authentication message-digest
+ip ospf message-digest-key 13 md5 cisco 
+int s 1/0
+ip ospf message-digest-key 13 md5 cisco
+  |
+|  R2  | router ospf 1
+area 0 au m
+int s 1/1
+ip ospf me 13 m cisco
+   |
+R3
+router ospf 1
+area 0 au m
+
+정보 확인
+
+interface 설정
+
+sh ip route
+sh ip int bri
+sh run
+
+sh cdp nei  det
+sh int s 1/0
+sh ip int s 1/0
+
+
+dynamic 
+
+sh ip protocol
+
+eigrp 
+
+sh ip eigrp to
+sh ip eigrp nei
+sh ip eigrp traffic
+
+ospf
+
+sh ip ospf nei    : 네이버 관한 정보
+sh ip ospf data  : 네이버에게 받은 정보
+sh ip ospf int s 1/0 : OSPF가 동작하는  interface 의 정보
+sh ip ospf vir  : virtual-link 의 동작 정보 
+
+virtual-link 설정을 하기 전에 sh ip protocol,sh ip ospf nei,sh ip ospf data,sh ip route 정보를  메모장에 복사해놓고 virtual-link 설정을 다 한후에 
+sh ip protocol,sh ip ospf nei,sh ip ospf data,sh ip route 정보를 확인해서 비교해라
+
+외부 정보를 재분배하고 sh ip ospf data , sh ip pro , sh ip route 확인 
+
+1:33 PM  day6 2교시
+이후 끝까지 책과 네이어 까페 참고 할것
+https://cafe.naver.com/itguild/147  --> 실습과제
+
