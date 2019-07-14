@@ -538,3 +538,5 @@ sh ip protocol,sh ip ospf nei,sh ip ospf data,sh ip route 정보를 확인해서
 이후 끝까지 책과 네이어 까페 참고 할것
 https://cafe.naver.com/itguild/147  --> 실습과제
 
+![ospf lab](../day6/ospf-lab.png)
+
