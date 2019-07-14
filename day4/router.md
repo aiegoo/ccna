@@ -540,3 +540,54 @@ https://cafe.naver.com/itguild/147  --> 실습과제
 
 ![ospf lab](../day6/ospf-lab.png)
 
+4:50 PM day6
+
+경로 선출
+
+1>롱기스트 매치룰 : 목적지 ip 에 가장 길게 일치하는 경로가 선출
+2>상황에 따라서 
+
+-다수의 routing protocol 이 있을때(다수의 AD 값이 있을때) AD(신뢰도)값이 가장 작은 경로가 선출
+ =>dynamic routing protocol 이 여러개일 경우는 거의 없다
+ =>dynamic routing protocol 을 주로 쓰고 static 을 백업으로 쓰는 경우가 있다 
+ =>routing protocol 의 AD 값은 변경할수 있다 
+
+-동일한 routing protocol 이 있을때(동일한 AD 값이 있을때)metric(경로값)값이 가장 작은 경로가 선출
+ =>dynamic routing protocol 은 metric 변경할 수 있다
+
+
+
+  routing table 을 완성
+
+1>interface 설정
+    interface 설정을 했을때 routing table 에 등록이 되려면 2가지 조건이 있다
+    - ip 대역대가 있어야 한다
+    - L2 까지 up이 되어있어야 한다
+
+
+interface 설정을 완성해서 routing table 에 등록
+
+
+=> router 에 직접 연결된 network (directly conneted) 만 등록이 된다
+     즉 routing table 이 전체적으로 완성이 되질 않는다 
+
+
+routing table 을 전체적으로 완성 시켜주기 위해서  routing protocol 을 구동 시켜준다
+
+
+## routing-protocol
+ Routing protocol 의 종류 
+
+
+## static  
+-Static : 내가 모르는 네트워크 네임을 관리자가 일일이 설정 (남의 이름 물어보기)
+
+ex>ip route 192.168.1.0 255.255.255.224  13.13.12.2
+
+
+-Dynamic
+
+  -IGP : AS 안에서 빨리빨리가 목적 : 내 네트워크를 관리자가 설정해주면 알아서 동적으로 전파 (자기 소개하기) interior gateway protocol
+  rip igrp ospf is-is
+  
+    -distance vector  : Ripv1 , Ripv2
