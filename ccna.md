@@ -2346,7 +2346,7 @@ routing table 을 전체적으로 완성 시켜주기 위해서  routing protoco
  Routing protocol 의 종류 
 
 
-## static
+## static  
 -Static : 내가 모르는 네트워크 네임을 관리자가 일일이 설정 (남의 이름 물어보기)
 
 ex>ip route 192.168.1.0 255.255.255.224  13.13.12.2
@@ -2512,6 +2512,8 @@ access-list 100 deny ip 192.168.1.0 0.0.0.255 13.13.10.0 0.0.0.255
 access-list 100 permit ip any any
 
 
+
+Day7 오전
 ACL 적용
 
 적용을 해준 곳에서만 ACL 이 동작을 한다
@@ -2620,6 +2622,7 @@ ip access-group AAA in
 
 
 
+Day7 1:41 PM
 
   NAT 
 
