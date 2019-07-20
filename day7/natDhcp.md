@@ -210,3 +210,145 @@ unknown : 목적지 mac 주소가 mac address table 에 없는 주소(정보)
 
 
 -filtering :정보를 수신한 port 와 목적지port 가 동일하면 정보를 전송하지 않는다
+
+
+Network 장비
+
+L1 : Hub -전기적인 신호를 증폭 ,같은 CD(충돌영역)안에 있다,Half-duplex
+
+L2 : Switch - CD(충돌영역)을 나누어 준다 ,full-duplex,  BD(broadcast domain)안에 있다
+ 
+L3 : Router - 물리적으로 BD(broadcast domain)을 나누어 준다
+
+
+VLAN(Virtual Local Area Network)
+
+
+논리적으로 broadcast domain 을 나누어 준다
+
+-broadcast traffic 의 영향을 최소화 시켜준다
+-broadcast 로 인한 LAN 구간 성능저하를 최소화 
+-ARP broadcast차단으로 unicast 접속이 불가능(보안) 
+=>장비 소모량이 줄어든다 
+
+A  vlan  =  A logical Network  =  A subnet  =  A  broadcast domain
+
+
+vlan 범위
+
+1 ~ 4094
+
+
+vlan 종류
+
+
+standard (vlan 1,1002,1003,1004,1005 ): 기본 생성이 되어 있고 수정 및 삭제가 불가능)
+
+1 ~ 1005
+
+[참고]
+모든 port 는 기본적으로 vlan 1 에 속해있다
+기본적으로 지원되는 최대 vlan  갯수는 1005개 
+
+[참고]
+VTP 서버 모드는 Standard VLAN 1~1005까지만 생성 및 관리가 가능하다
+
+extended
+
+1006 ~ 4094
+
+[참고]
+VTP transparent 모드는 extended  생성 및 관리가 가능하다
+
+
+[vlan 구성 방법]
+
+1.vlan 생성 ,수정 ,삭제 (sh vlan bri)
+
+
+vlan 11       생성
+name HR     수정
+
+no vlan 11   삭제
+
+vlan 11-20 : vlan 11 ~ 20 까지 한번에 생성
+
+no vlan 2-1001 : vlan 2 ~ 1001 까지 한번에 삭제
+
+ 
+Vlan 은 NVRAM 에 저장되지 않고  flash memory 안에 vlan.dat 라는 파일로 저장이된다 
+그래서 vlan은 reload 로 삭제되지 않는다 
+그래서  vlan을 삭제하려면 vlan.dat 파일을  delete flash:vlan.dat 명령어로 삭제하고 reload ~
+
+
+2.해당 port 를 해당 vlan 에 매핑(access)  sh vlan bri
+
+int f 0/1
+switchport mode access
+switchport access vlan 11
+
+int r f0/1-5,f0/7-9
+sw m a
+sw a v 11
+
+
+4:40pm
+
+
+3.trunk 완성  sh int tru
+
+DATA에 vlan-id(vlan번호)를 tagging 해주는것
+
+
+int f 0/24
+switchport trunk encapsulation ?
+
+isl       : cisco           Native vlan X
+dot1q : IEEE 802.1q  Native vlan O
+
+
+Native vlan : DATA 에 vlan-id 가 없는 경우에 처리되는 vlan 으로 기본값 vlan 1  
+ 변경할수 있고 switch 간의 native vlan 이 동일해야 한다
+
+
+
+int f 0/24
+switchport trunk encapsulation dot1q
+switchport mode trunk
+
+
+int r f 0/22-24
+sw t e d
+sw m t
+
+
+trunk 옵션 
+
+
+allowed : vlan 허용 범위
+
+int f 0/24
+switchport trunk allowed vlan 11-20
+
+vlan 11 ~ 20 까지만 trunk 허용
+
+기본은 1 - 4094
+
+
+native : native vlan 지정
+
+int f 0/24
+switchport trunk native vlan 10
+
+native vlan 을 10으로 지정
+
+[주의] switch 간의 native vlan 이 동일해야 한다
+
+
+[참고]
+
+dot1q 만 지원되는 스위치 
+
+int f 0/24
+switchport mode trunk
+
