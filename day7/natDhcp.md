@@ -352,3 +352,55 @@ dot1q 만 지원되는 스위치
 int f 0/24
 switchport mode trunk
 
+
+5:17 PM
+4.VTP(Vlan Trunk Protocol) sh vtp status
+
+vlan database 정보를 trunk port 를 통해서만 교환하는 protocol
+(옵션:설정을 한다면 가장 먼저 설정하는것이 좋다: vlan 구성 용이,vlan 관리 용이,trunk설정 완성을 확인)
+
+5:24 PM
+VTP 구성 조건
+
+
+-vtp domain 일치(필수):trunk 설정이 완성되어있다는 전제하에 하나의 switch 에서 
+vtp domain 설정을 하면  나머지 switch 에서 vtp domain을 공유 한다
+
+설정 : vtp domain CISCO
+
+-vtp password(옵션):최소한의 인증,password가 다르면 공유를 하지 않음
+ sh vtp pass
+
+설정 : vtp pass cisco
+
+-trunk 완성 
+
+
+
+[vtp mode]
+
+Server:vlan 생성,수정,삭제   가능,일치 O ,중계 O
+Client:vlan 생성,수정,삭제 불가능,일치 O ,중계 O
+
+Transparent:vlan 생성,수정,삭제 가능,일치 X , 중계 O
+
+
+5:27 PM
+[vtp mode]
+
+Server:vlan 생성,수정,삭제   가능,일치 O ,중계 O
+Client:vlan 생성,수정,삭제 불가능,일치 O ,중계 O
+
+Transparent:vlan 생성,수정,삭제 가능,일치 X , 중계 O
+
+
+기본 mode 는 Server
+
+설정
+
+vtp mode server
+vtp mode client
+vtp mode transparent
+
+
+5:34 PM
