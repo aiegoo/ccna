@@ -404,3 +404,115 @@ vtp mode transparent
 
 
 5:34 PM
+
+
+12:51 PM
+Day8
+
+연습문제 네이버 까페
+https://cafe.naver.com/itguild/646
+
+
+5. inter-vlan
+
+서로 다른vlan 을 통신 시켜주기 위해서 L3(Router)장비에서 설정해주는 vlan routing 이다
+
+=>각각의 vlan 에 대해서 default gateway 를 구성 
+
+
+[참고]
+물리적인 interface의 고갈을 해결하는 방법
+=> subinterface 를 구성
+
+subinterface :물리적인 interface 토대위에 만들어준논리적인 interface 
+
+R1
+
+int f 0/0
+no shut
+
+int f 0/0.11
+encapsulation dot1q 11
+ip add 192.168.11.254 255.255.255.0
+
+int f 0/0.12
+en d 12
+ip add 192.168.12.254 255.255.255.0
+
+int f 0/0.13
+en d 13
+ip add 192.168.13.254 255.255.255.0
+
+
+
+[참고]
+스위치는 MAC 주소 기반으로 프레임을 전송하기 때문에 스위치 포트에 IP 주소 설정이 불필요하다
+스위치를 관리하기 위해서 텔넷 접속을 하거나, 또는 스위치 Ping 테스트, Cisco IOS 다운로드/업로드를 하기 위해서는 IP 주소가 필요하다. vlan 에 ip 를 설정해준다 
+
+vlan 1 은 기본 생성이 되어있고 모든 port는 기본적으로 vlan 1 에 속해있고 native vlan 도 기본적으로  vlan 1 이기때문에 vlan 1 에 설정하는것이 가장 효율적이다 
+
+
+int vlan 1
+ip add 1.1.1.1 255.255.255.0
+no shut
+
+
+1:47 PM
+
+Network 구축의 핵심
+
+-확장성
+-이중화
+-백업
+-로드 분산
+
+
+Router 간의 이중화는 문제가 없다
+ 
+Switch 간의 이중화는 문제가 발생 (bridging Loop : 브릿징 루프)가 발생
+
+
+ Bridging Loop 종류
+ -broadcast storm
+ -copy unicast frame (유니케스트 프레임을 복제) 1:54 PM vedeo recorded
+ -MAC Flapping (MAC 주소 테이블 불안정화)
+
+
+
+2:06 PM
+
+STP spanning tree protocol
+스위치간의 물리적으로 이중화 되어 있는 구간을 논리적으로 block 시켜주는 것
+=> siwtch 간의 이중화 구현이 가능 하다
+=> 이중화 구간이 X 개면 block 도 X 개여야 한다
+1:43 PM video recorded
+
+
+STP 종류
+
+802.1d  STP (PVST)       0
+802.1s  MSTP              3
+802.1w RSTP               2 
+
+
+port 유형
+
+-DP(지정  port) : 설정 BPDU 를 송신  or  TCN BPDU 를 수신 
+-RP(Root port) : 설정 BPDU 를 수신  or  TCN BPDU 를 송신
+-AP(대체  port) : 설정 BPDU 를 수신만 한다 , 논리적으로 block 
+
+
+
+port 상태
+
+-disable : shutdown 상태, 혹은 cable 이 연결이 안된 상태 , BPDU gurad or port-security 로 인한
+              shutdown  상태 , DATA 송수신 불가능 , BPDU 송수신도 불가능 
+
+-blocking : 논리적으로 block 된 상태(bridging loop 를 방지) ,BPDU 를 수신만 한다, max-age 20 초
+                 => max-age동안 BPDU 를 수신못하는 경우 , 후순위 BPDU를 수신한 경우
+
+-listening : port 역활(유형)을 지정 (DP,RP,AP 지정)   ,forward-delay :15 초 
+
+-learning : mac-address 를 학습하는 상태   ,forward-delay :15 초 
+
+-forwarding : DATA 송수신이 가능한 상태 
