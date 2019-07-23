@@ -1596,7 +1596,7 @@ EIGRP
 (기본은 균등 로드 부산만 지원 , 비균등 로드 분산을 하려면 variance 값을 조절해줘야 한다 ,기본값 1이고 범위는 1 ~ 128 )
 
 
-[참고]
+[참고] 12:50 PM
 비균등 로드 분산을 하려면 2가지의 조건이 만족 되어야 한다
 
 1>variance 값을 이용해서 최적 경로의 metric 보다 비균등 로드 분산 하려는 경로의 metric 을 작게 만들어 준다
@@ -1981,7 +1981,7 @@ eigrp : very fast
 
 2.classless routing protocol
 
--VLSM,CIDR 지원 된다
+-VLSM,CIDR 지원 된다  => 수동요약만 지원한다 
 
 3.multicast update
 
@@ -2123,7 +2123,7 @@ Routing table  : 최적 경로가 등록된 table  : sh ip route
 
 
 
-13.Network Type
+13.Network Type --외울것
 
                                 Hello        Dead      DR,BDR 선출 유무     네이버(인접성)
 point-to-point                 10           40                 X                     자동
@@ -2133,7 +2133,7 @@ nonbroadcast                   30          120                O                 
 
 
 
-14.LSA 광고 타입
+14.LSA 광고 타입  -->외울것
 
           구분      영어 구분      정보                    출처       routing table   database  table 
 
@@ -2346,7 +2346,7 @@ routing table 을 전체적으로 완성 시켜주기 위해서  routing protoco
  Routing protocol 의 종류 
 
 
-## static
+## static  
 -Static : 내가 모르는 네트워크 네임을 관리자가 일일이 설정 (남의 이름 물어보기)
 
 ex>ip route 192.168.1.0 255.255.255.224  13.13.12.2
@@ -2512,6 +2512,8 @@ access-list 100 deny ip 192.168.1.0 0.0.0.255 13.13.10.0 0.0.0.255
 access-list 100 permit ip any any
 
 
+
+Day7 오전
 ACL 적용
 
 적용을 해준 곳에서만 ACL 이 동작을 한다
@@ -2620,6 +2622,7 @@ ip access-group AAA in
 
 
 
+Day7 1:41 PM
 
   NAT 
 
@@ -2774,7 +2777,10 @@ lease infinite
 -수신한 브로드케스트를 유니케스트로 변환시켜주는 기능
 
 
+-------- end 2:46 PM
 
+
+Day7 3:40PM
 
 Router 는  routing 
 

@@ -1,5 +1,27 @@
+제3부 p116
+<pre>
+RAM : 설정을 하면 자동적으로 RAM 에 저장이 되고 장비는 RAM 에 있는 내용대로 동작을 한다  휘발성 메모리 : 재부팅을 하면 무조건 삭제가 된다
+
+NVRAM : 명령어를 입력해야만 저장이 되고 명령어를 입력해야만 삭제가 된다 
+           비 휘발성 메모리 : 재부팅으로 삭제가 되지 않는다  (save file 로 생각하면 된다)
+           0x2102  vs 0x2142 (x뒤 숫자는 16진수)
+
+NVRAM  참조 여부
+
+config-register 값
+
+0x2102 : NVRAM 을 로드 하는 값
+0x2142 : NVRAM 을 로드 하지 않는 값
+
+</pre>
+
+### Cisco router 2800 series
+https://www.andovercg.com/datasheets/cisco-2800-series-router.pdf
+
+data, voice and video intergrated services router
 
 ## cisco ios 명령어
+
 
 mode: 생김새, 하는 일
 
